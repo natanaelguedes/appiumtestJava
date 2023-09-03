@@ -10,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.springframework.expression.spel.ast.Assign;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
@@ -18,9 +17,9 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class FormularioTest2 {
-	@Test
-	 public void ListarForm() throws MalformedURLException  {
-		// TODO Auto-generated method stub
+	private AndroidDriver<MobileElement> driver;
+	@Before
+	private void InicializarAppium() throws MalformedURLException {
 		DesiredCapabilities dc = new DesiredCapabilities();
 		dc.setCapability("platformName", "Android");
 		dc.setCapability("deviceName", "emulator-5554");
@@ -28,14 +27,32 @@ public class FormularioTest2 {
 		dc.setCapability(MobileCapabilityType.APP,
 				"C:\\Users\\natan\\git\\TestAppiumJava2\\src\\main\\resources\\CTAppium_1_2.apk");
 		// URI a = new URI("http://www.foo.com/");
-		AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),dc);
+		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),dc);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		List<MobileElement> elementosENC = driver.findElements(By.className("android.widget.TextView"));
-		for (MobileElement el : elementosENC) {
-			System.out.println(el.getText());
-		}
-	
 		 driver.findElement(By.xpath("//*[@text='Formulário']")).click();//...
+
+ 	}
+	@Test
+	 public void ListarForm() throws MalformedURLException  {
+		// TODO Auto-generated method stub
+		 List<MobileElement> elementosENC =driver.findElements(By.className("android.widget.TextView")); 
+		  elementosENC.get(1).click();//;
+		  MobileElement campoNome = driver.findElement(MobileBy.AccessibilityId("nome"));
+		  campoNome.sendKeys("Natanael");
+          String text = campoNome.getText();//.get
+          Assert.assertEquals("Natanael", text);
+          driver.quit();
+	}
+		  /*
+		 * List<MobileElement> elementosENC =
+		 * driver.findElements(By.className("android.widget.TextView")); for
+		 * (MobileElement el : elementosENC) { System.out.println(el.getText()); }
+		 * 
+		 * driver.findElement(By.xpath("//*[@text='Formulário']")).click();//...
+		 */
+	@Test
+	public void deveInteragirComoCombo() throws MalformedURLException{
+		
 		 driver.findElement(By.className("android.widget.EditText")).sendKeys("Natanael");
 		 driver.findElement(By.className("android.widget.CheckBox")).click();
 		 driver.findElement(By.className("android.widget.Switch")).click();
@@ -44,10 +61,10 @@ public class FormularioTest2 {
 		 driver.findElement(By.xpath("//*[@text='SALVAR']")).click();
 		  
 		  //validar 
-		 MobileElement nome = driver.findElement(By.xpath("//android.widget.TextView[@text='Nome: Natanael']"));
-		 Assert.assertEquals("Nome: Natanael", nome.getText()); 
-		 MobileElement con = driver.findElement(By.xpath("//android.widget.TextView[@text='Console: switch']"));
-		 Assert.assertEquals("Console: switch" , con.getText()); //start-with que a //
+		  MobileElement nome = driver.findElement(By.xpath("//android.widget.TextView[@text='Nome: Natanael']"));
+		  Assert.assertEquals("Nome: Natanael", nome.getText()); 
+		  MobileElement con = driver.findElement(By.xpath("//android.widget.TextView[@text='Console: switch']"));
+		  Assert.assertEquals("Console: switch" , con.getText()); //start-with que a //
 		  MobileElement switch2 = driver.findElement(By.xpath("//android.widget.TextView[@text='Slider: 25']"));
 		  Assert.assertEquals("Slider: 25" , switch2.getText()); //start-with que a
 		  MobileElement checkbox = driver.findElement(By.xpath("//android.widget.TextView[@text='Checkbox: Marcado']"));
@@ -62,5 +79,7 @@ public class FormularioTest2 {
 		   
 		  
 		  	}
+
+
 
 }

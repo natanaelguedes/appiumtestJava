@@ -19,14 +19,7 @@ public class CalcJunit {
     @Test                                                 
 	public void Soma() throws MalformedURLException {
 
-		DesiredCapabilities dc = new DesiredCapabilities();
-		 dc.setCapability("platformName", "Android");
-		 dc.setCapability("deviceName","emulator-5554");
-		 dc.setCapability("automationName", "uiautomator2");
-		 dc.setCapability("appPackage", "com.android.calculator2");
-		 dc.setCapability("appActivity","com.android.calculator2.Calculator");
-   // URI a = new URI("http://www.foo.com/");
-	     AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),dc);
+		AndroidDriver driver = InicializandoAppim();
 		MobileElement el6 = (MobileElement) driver.findElementById("com.android.calculator2:id/digit_8");
 		el6.click();
 		MobileElement el7 = (MobileElement) driver.findElementByAccessibilityId("plus");
@@ -45,6 +38,18 @@ public class CalcJunit {
         Assert.assertEquals("16", el10.getText());
 		//Assert.e
         //testes
+	}
+
+	private AndroidDriver InicializandoAppim() throws MalformedURLException {
+		DesiredCapabilities dc = new DesiredCapabilities();
+		 dc.setCapability("platformName", "Android");
+		 dc.setCapability("deviceName","emulator-5554");
+		 dc.setCapability("automationName", "uiautomator2");
+		 dc.setCapability("appPackage", "com.android.calculator2");
+		 dc.setCapability("appActivity","com.android.calculator2.Calculator");
+   // URI a = new URI("http://www.foo.com/");
+	     AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),dc);
+		return driver;
 	}
 
 	private AndroidDriver<MobileElement> InicializarAppium() throws MalformedURLException {
