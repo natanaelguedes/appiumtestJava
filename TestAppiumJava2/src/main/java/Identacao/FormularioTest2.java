@@ -19,13 +19,13 @@ import io.appium.java_client.remote.MobileCapabilityType;
 public class FormularioTest2 {
 	private AndroidDriver<MobileElement> driver;
 	@Before
-	private void InicializarAppium() throws MalformedURLException {
+	public void InicializarAppium() throws MalformedURLException {
 		DesiredCapabilities dc = new DesiredCapabilities();
 		dc.setCapability("platformName", "Android");
 		dc.setCapability("deviceName", "emulator-5554");
 		dc.setCapability("automationName","uiautomator2");
 		dc.setCapability(MobileCapabilityType.APP,
-				"C:\\Users\\natan\\git\\TestAppiumJava2\\src\\main\\resources\\CTAppium_1_2.apk");
+				"C:\\Users\\natan\\git\\appiumtestJava\\TestAppiumJava2\\src\\main\\resources\\CTAppium_1_2.apk");
 		// URI a = new URI("http://www.foo.com/");
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),dc);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
