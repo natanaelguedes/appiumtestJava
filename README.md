@@ -6,5 +6,4 @@ Version Android:
 7.0 
 
 
-API LEVEL:   
-API 24
+API LEVEL:   API 24
