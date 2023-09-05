@@ -72,6 +72,10 @@ public class PreencherFormularioTest {
 		 Assert.assertEquals("Slider: 25" , switch2.getText()); //start-with que a
 		 MobileElement checkbox = driver.findElement(By.xpath("//android.widget.TextView[@text='Checkbox: Marcado']"));
 		 Assert.assertEquals("Checkbox: Marcado" , checkbox.getText()); //start-with
+		  MobileElement date = driver.findElement(By.xpath("//android.widget.TextView[@text='Data: 01/01/2000']"));
+		  Assert.assertEquals("Data: 01/01/2000",date.getText());
+		  MobileElement hora = driver.findElement(By.xpath("//android.widget.TextView[@text='Hora: 06:00']"));
+		   Assert.assertEquals("Hora: 06:00",hora.getText());
 			/*
 			 * MobileElement Switch = driver.findElement(By.xpath(
 			 * "//android.widget.TextView[starts-with(@text,'Switch')]"));
