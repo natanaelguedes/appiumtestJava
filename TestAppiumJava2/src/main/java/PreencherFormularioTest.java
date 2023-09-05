@@ -38,15 +38,15 @@ public class PreencherFormularioTest {
 	public void PreencherCampoSwitchCombo() throws MalformedURLException{
 		// driver.findElement(By.xpath("//*[@text='Formulário']")).click();//...
 
-         MobileElement check =driver.findElement(By.className("android.widget.CheckBox"));
-		 MobileElement sw= driver.findElement(MobileBy.AccessibilityId("switch"));//.click();
-		 Assert.assertTrue(check.getAttribute("checked").equals("false"));
-		 Assert.assertTrue(sw.getAttribute("checked").equals("true"));
+         MobileElement mobileElement =driver.findElement(By.className("android.widget.CheckBox"));
+		 MobileElement SW= driver.findElement(MobileBy.AccessibilityId("switch"));//.click();
+		 Assert.assertTrue(mobileElement.getAttribute("checked").equals("false"));
+		 Assert.assertTrue(SW.getAttribute("checked").equals("true"));
 		 
-		       check.click();
-		       sw.click();
-		 	 Assert.assertFalse(check.getAttribute("checked").equals("false"));
-			 Assert.assertFalse(sw.getAttribute("checked").equals("true"));
+		       mobileElement.click();
+		       SW.click();
+		 	 Assert.assertFalse(mobileElement.getAttribute("checked").equals("false"));
+			 Assert.assertFalse(SW.getAttribute("checked").equals("true"));
 			 
  	}
          
