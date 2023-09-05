@@ -1,3 +1,4 @@
 # TestAppiumJava
 
-Android 7.0  API 24
+Version Android:7.0 
+API LEVEL: API 24
