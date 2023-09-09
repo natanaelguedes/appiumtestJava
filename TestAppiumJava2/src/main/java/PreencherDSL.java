@@ -39,23 +39,33 @@ public class PreencherDSL {
 	  }
 	 
 	@Test
-	public void PreencherCampoSwitchCombo() throws MalformedURLException{
+	public void DeveInteragirCombo() throws MalformedURLException{
 		// driver.findElement(By.xpath("//*[@text='Formulário']")).click();//...
 
-         MobileElement mobileElement =driver.findElement(By.className("android.widget.CheckBox"));
-		 MobileElement SW= driver.findElement(MobileBy.AccessibilityId("switch"));//.click();
-		 Assert.assertTrue(mobileElement.getAttribute("checked").equals("false"));
-		 Assert.assertTrue(SW.getAttribute("checked").equals("true"));
+         dsl.selecionarCombo(MobileBy.AccessibilityId("Console"), "Nitendo Seitch");
+		  String text = dsl.obterTexto(By.xpath("android.widget.Spinner/android.widget.TextView"));//.getText();
+          Assert.assertEquals("Nitendo Switch", text);
+	}
+         
+	@Test
+	public void PreencherCampoSwitchCombo() throws MalformedURLException{
+		// verificar status dos elementos
+		
+
+		 Assert.assertFalse(dsl.isCheckMarcado(By.className("android.widget.CheckBox")));
+		 Assert.assertTrue(dsl.isCheckMarcado(MobileBy.AccessibilityId("switch")));
 		 
-		       mobileElement.click();
-		       SW.click();
-		 	 Assert.assertFalse(mobileElement.getAttribute("checked").equals("false"));
-			 Assert.assertFalse(SW.getAttribute("checked").equals("true"));
+		 dsl.clicar(By.className("android.widget.CheckBox"));
+		 dsl.clicar(By.className("switch"));
+		 //clicar nos elementos 
+		       Assert.assertTrue(dsl.isCheckMarcado(By.className("android.widget.CheckBox")));
+			   Assert.assertFalse(dsl.isCheckMarcado(MobileBy.AccessibilityId("switch")));
 			 
  	}
          
 		 
-
+//parou aqui
+	
 	     @Test
 	    public void Desafio() throws MalformedURLException{
 			  driver.findElement(By.className("android.widget.EditText")).sendKeys("Natanael");
