@@ -1,3 +1,4 @@
+package PageTest;
 import java.awt.Checkbox;
 import java.net.MalformedURLException;
 
@@ -11,15 +12,18 @@ import DriverCentrado.DSL;
 import DriverCentrado.DriverFactory;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import page.FormularioPage;
+import page.MenuPage;
 
-public class PreencherDSL {
+public class FormularioTeste {
+	private MenuPage menu = new MenuPage();
+    private FormularioPage page = new FormularioPage();
 	private DSL dsl = new DSL();
 
 	@Before
 	public void iniciarDSL() throws MalformedURLException {
-		// TODO Auto-generated constructor stub
-		//driver = DriverFactory.getDriver();
-		dsl.clicarPorTexto("Formulário");//.fi
+        menu.acessarFormulario();
+
 	}
        
 	
@@ -30,27 +34,34 @@ public class PreencherDSL {
 	  }
 	  
 	  
-		/*
-		 * @Test public void devePreencherCampoTexto() throws MalformedURLException{
-		 * dsl.clicarPorTexto("Formulário");
-		 * dsl.escrever(MobileBy.AccessibilityId("nome"),"Natanael");
-		 * Assert.assertEquals("Natanael",dsl.obterTexto(MobileBy.AccessibilityId("nome"
-		 * )));
-		 */	  	 //*/
-    //  dsly.className("android.widget.Spinner/XBox One"));
-	  //String text = dsl.obterTexto(By.xpath("android.widget.Spinner/android.widget.TextView"));//
-	  //Assert.assertEquals("Nitendo Switch", text);
-	/*   }
-       @Test 
-       public void deveInteragirSwitchCheckbox() throws MalformedURLException{
-		 Assert.assertFalse(dsl.isCheckMarcado(By.className("android.widget.CheckBox")));
-		 Assert.assertTrue(dsl.isCheckMarcado(MobileBy.AccessibilityId("switch")));
-		 dsl.clicar(By.className("android.widget.CheckBox"));
-		 dsl.clicar(MobileBy.AccessibilityId("switch")); //clicar nos elementos
-		  Assert.assertTrue(dsl.isCheckMarcado(By.className("android.widget.CheckBox")) );
-		  Assert.assertFalse(dsl.isCheckMarcado(MobileBy.AccessibilityId("switch")));
+		
+		  @Test 
+		  public void d() throws MalformedURLException{
+		  //formPage.clicarPorTexto("Formulário");
+		  page.escreverNome("Natanael");
+		  Assert.assertEquals("Natanael",page.obterNome());
+ 		  
 
-       }*/
+}
+	
+		  @Test 
+		  public void DeveInteragirCombo() throws MalformedURLException{
+ 		
+		  Assert.assertEquals("Nitendo Switch",page.obterNome());
+ 		  
+
+}    
+	   @Test 
+       public void deveInteragirSwitchCheckbox() throws MalformedURLException{
+		 Assert.assertFalse(page.isCheckboxMarcado());
+		 Assert.assertTrue(page.isSwitchMarcado());///;/;..isCheckMarcado(MobileBy.AccessibilityId("switch")));
+		 page.clicarCheck();//.clicar(By.className("android.widget.CheckBox"));
+		 page.clicarSwitch();
+		  Assert.assertTrue(page.isCheckboxMarcado());
+		  Assert.assertFalse(page.isSwitchMarcado());
+
+       }
+	   
 
 		  @Test 
 		  public void RealizarCadastro() throws MalformedURLException{
