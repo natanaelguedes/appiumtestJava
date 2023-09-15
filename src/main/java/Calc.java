@@ -22,7 +22,6 @@ public class Calc {
      dc.setCapability("appActivity","com.android.calculator2.Calculator");
    // URI a = new URI("http://www.foo.com/");
     AndroidDriver<MobileElement> driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),dc);
-//
 	}
 
 }
